@@ -69,13 +69,13 @@ public class handle {
 
     public static void initialHandle(int initCommand) {
         switch (initCommand) {
-            case 1 : {
+            case 1: {
                 Menu.stringMenu();
             }
-            case 2 : {
+            case 2: {
                 Menu.mathMenu();
             }
-            case 3 : {
+            case 3: {
                 System.out.println("Goodbye");
                 System.exit(0);
             }
@@ -83,5 +83,5 @@ public class handle {
                 System.out.println("unknown command");
             }
         }
-
+    }
 }
