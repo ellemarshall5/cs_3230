@@ -1,4 +1,4 @@
-package main.java.com.github.ellemarshall5.cs3230;
+package com.github.ellemarshall5.cs3230;
 
 import java.util.List;
 import java.util.ArrayList;
