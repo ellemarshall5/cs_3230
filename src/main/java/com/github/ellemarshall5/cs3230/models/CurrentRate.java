@@ -1,43 +1,36 @@
 package com.github.ellemarshall5.cs3230.models;
 
+import kong.unirest.json.JSONObject;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import java.io.IOException;
+
 public class CurrentRate {
-    //copy infor from postman
 
-    private String date;
-    private String explanation;
-    private String url;
-    private String title;
+    private String exRate;
 
-    public CurrentRate(String date, String explanation, String url, String title) {
-        this.date = date;
-        this.explanation = explanation;
-        this.url = url;
-        this.title = title;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public String getExplanation() {
-        return explanation;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getTitle() {
-        return title;
+    public CurrentRate(String rate) {
+        this.exRate = rate;
     }
 
     @Override
     public String toString() {
-        return "Apod{" +
-                "\n\tdate='" + date + '\'' +
-                ",\n\texplanation='" + explanation + '\'' +
-                ",\n\t url='" + url + '\'' +
-                ",\n\t title='" + title + '\'' +
-                '}';
+        return exRate;
+    }
+
+    public static String exchange(String currency, String crypto) throws IOException {
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url("https://min-api.cryptocompare.com/data/price?fsym=" + crypto + "&tsyms=" + currency)
+                .build();
+        Response response = client.newCall(request).execute();
+        JSONObject jsonObject = new JSONObject(response.peekBody(2048).string());
+        response.close();
+        return jsonObject.get(currency).toString();
     }
 }
+
+

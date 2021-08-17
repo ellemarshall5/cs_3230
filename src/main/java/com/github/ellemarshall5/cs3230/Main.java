@@ -1,5 +1,7 @@
 package com.github.ellemarshall5.cs3230;
 
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
         Cli cli = new Cli();
@@ -11,5 +13,4 @@ public class Main {
         Menu.mainMenu();
     }
 
-    //public static void need ok http from postman 48:00 in 2:01:01
 }
